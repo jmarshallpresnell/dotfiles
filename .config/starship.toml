@@ -1,0 +1,197 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+format = """
+[](fg:bg)\
+$os\
+$username\
+$hostname\
+[ ](fg:sep_fg bg:bg)\
+$directory\
+[](fg:sep_fg bg:bg)\
+$git_branch\
+$git_status\
+[ ](fg:sep_fg bg:bg)\
+$c\
+$rust\
+$golang\
+$nodejs\
+$package\
+$php\
+$java\
+$kotlin\
+$haskell\
+$python\
+$docker_context\
+$conda\
+[](fg:sep_fg bg:bg)\
+$time\
+[](fg:bg)\
+$line_break$character"""
+
+palette = 'jmp'
+
+[palettes.jmp]
+bg = '#004040'
+color_bg = '#000000'
+sep_fg = '#006060'
+os_fg = '#00c0c0'
+user_fg = '#c0c0c0'
+host_fg = '#c0c0c0'
+dir_fg = '#ffffff'
+git_fg = '#a0a0a0'
+git_highlight_fg = '#ffffff'
+git_highlight_bg = '#c00000'
+code_fg = '#c0c0ff'
+time_fg = '#c0c0c0'
+
+[fill]
+symbol = " "
+
+[os.symbols]
+Windows = "󰍲 "
+Ubuntu = "󰕈 "
+SUSE = " "
+Raspbian = "󰐿 "
+Mint = "󰣭 "
+Macos = "󰀵"
+Manjaro = ""
+Linux = "󰌽"
+Gentoo = "󰣨"
+Fedora = "󰣛"
+Alpine = ""
+Amazon = ""
+Android = ""
+Arch = "󰣇"
+Artix = "󰣇"
+EndeavourOS = ""
+CentOS = ""
+Debian = "󰣚"
+Redhat = "󱄛"
+RedHatEnterprise = "󱄛"
+
+[os]
+disabled = false
+style = "bg:bg fg:os_fg"
+
+[username]
+disabled = false
+show_always = true
+style_user = "bg:bg fg:user_fg"
+style_root = "bg:bg fg:color_yellow"
+format = '[ $user]($style)'
+
+[hostname]
+disabled = false
+style = "bg:bg fg:host_fg"
+format = "[@$hostname]($style)"
+
+[directory]
+disabled = false
+style = "fg:dir_fg bg:bg"
+format = "[ $path ]($style)"
+truncate_to_repo = false
+truncation_length = 3
+truncation_symbol = "…/"
+
+[directory.substitutions]
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = "󰝚 "
+"Pictures" = " "
+"Developer" = "󰲋 "
+
+[git_branch]
+disabled = false
+symbol = " "
+style = "fg:git_fg bg:bg"
+format = '[ $symbol $branch(:$remote_name) ]($style)'
+
+[git_status]
+style = "fg:git_highlight_fg bg:git_highlight_bg"
+format = '[[( $all_status$ahead_behind )]($style)](fg:git_fg bg:bg)'
+
+[nodejs]
+symbol = "\ued0d"
+style = "fg:code_fg bg:bg"
+format = '[[ $symbol( $version) ]($style)](fg:#ffffff bg:#ffff00)'
+
+[package]
+symbol = "\ueb29"
+style = "fg:code_fg bg:bg"
+format = '[[ $symbol( $version) ]($style)](fg:#ffffff bg:#ffff00)'
+
+[time]
+disabled = false
+use_12hr = false
+time_format = "%R"
+style = "fg:time_fg bg:bg"
+format = '[[   $time ]($style)]($style)'
+
+[line_break]
+disabled = false
+
+[character]
+disabled = false
+success_symbol = '[](bold fg:color_green)'
+error_symbol = '[](bold fg:color_red)'
+
+
+
+
+# ----------------------------------------------
+# Not yet configured
+# ----------------------------------------------
+
+[c]
+symbol = " "
+style = "fg:code_fg bg:bg"
+format = '[[ $symbol( $version) ]($style)](fg:#ffffff bg:#ffff00)'
+
+[rust]
+symbol = ""
+style = "fg:code_fg bg:bg"
+format = '[[ $symbol( $version) ]($style)](fg:#ffffff bg:#ffff00)'
+
+[golang]
+symbol = ""
+style = "fg:code_fg bg:bg"
+format = '[[ $symbol( $version) ]($style)](fg:#ffffff bg:#ffff00)'
+
+[php]
+symbol = ""
+style = "fg:code_fg bg:bg"
+format = '[[ $symbol( $version) ]($style)](fg:#ffffff bg:#ffff00)'
+
+[python]
+symbol = ""
+style = "fg:code_fg bg:bg"
+format = '[[ $symbol( $version) ]($style)](fg:#ffffff bg:#ffff00)'
+
+[docker_context]
+symbol = ""
+style = "fg:code_fg bg:bg"
+format = '[[ $symbol( $context) ]($style)](fg:#ffffff bg:#ffff00)'
+
+# ----------------------------------------------
+# Probably never gonna use
+# ----------------------------------------------
+
+
+[java]
+symbol = " "
+style = "fg:color_orange bg:color_bg2"
+format = '[[ $symbol( $version) ](fg:color_orange bg:color_bg2)]($style)'
+
+[kotlin]
+symbol = ""
+style = "fg:color_orange bg:color_bg2"
+format = '[[ $symbol( $version) ](fg:color_orange bg:color_bg2)]($style)'
+
+[haskell]
+symbol = ""
+style = "fg:color_orange bg:color_bg2"
+format = '[[ $symbol( $version) ](fg:color_orange bg:color_bg2)]($style)'
+
+[conda]
+style = "fg:color_orange bg:color_bg2"
+format = '[[ $symbol( $environment) ](fg:color_orange bg:color_bg2)]($style)'
